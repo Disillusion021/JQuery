@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>尚硅谷会员注册页面</title>
+    <script type="text/javascript" src="../../static/script/jquery-1.7.2.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../static/css/style_w.css">
+    <script type="text/javascript">
+        //页面加载完之后执行函数
+        $(function () {
+            //给注册绑定单击事件
+            $("#sub_btn").click(function () {
+                // 验证用户名：必须由字母，数字下划线组成，并且长度为5到12位
+                //1 获取用户名输入框里的内容
+                var usernameText = $("#username").val();
+                //2 创建正则表达式对象
+                var usernamePatt = /^\w{5,12}$/;
+                //3 使用test方法验证
+                if (!usernamePatt.test(usernameText)) {
+                    //4 提示用户结果
+                    $("span.errorMsg").text("用户名不合法!");
+                    return false;
+                }
+
+                // 验证密码：必须由字母，数字下划线组成，并且长度为5到12位
+                //1 获取用户名输入框里的内容
+                var passwordText = $("#password").val();
+                //2 创建正则表达式对象
+                var passwordPatt = /^\w{5,12}$/;
+                //3 使用test方法验证
+                passwordPatt.test(passwordText);
+                if (!passwordPatt.test(passwordText)) {
+                    //4 提示用户结果
+                    $("span.errorMsg").text("密码不合法!");
+                    return false;
+                }
+
+                // 验证确认密码：和密码相同
+                //1 获取确认密码内容
+                var repwdText = $("#repwd").val();
+                //2 和密码相比较
+                if (passwordText != repwdText) {
+                    //3 提示用户
+                    $("span.errorMsg").text("确认密码和密码不一致!");
+                    return false;
+                }
+
+                // 邮箱验证：xxxxx@xxx.com
+                //1 获取邮箱里的内容
+                var emailText = $("#email").val();
+                //2 创建正则表达式对象
+                var emailPatt = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
+                //3 使用test方法验证是否合法
+                if (!emailPatt.test(emailText)) {
+
+                    //4 提示用户
+                    $("span.errorMsg").text("邮箱格式不正确");
+                    return false;
+                }
+
+
+                // 验证码：现在只需要验证用户已输入。因为还没讲到服务器。验证码生成。
+                var codeText = $("#code").val();
+                //去掉验证码前后空格
+                codeText = $.trim(codeText);
+                if (codeText == null || codeText == "") {
+                    //4 提示用户
+                    $("span.errorMsg").text("验证码不能为空");
+                    return false;
+                }
+                // 去掉错误信息
+                $("span.errorMsg").text("");
+            });
+
+        });
+    </script>
+    <style>
+        #login_header{
+            height: 82px;
+            margin-left: 80px;
+        }
+        #logo {
+            float: left;
+        }
+        #login_banner {
+            height: 550px;
+            background-color: #39987c;
+        }
+        #l_content {
+            margin-top: 0;
+            float: left;
+            width: 58%;
+            height: 100%;
+        }
+        #r_content {
+            margin-top: 0;
+            width: 42%;
+            height: 100%;
+            float: right;
+        }
+        #l_content span {
+            display: inline-block;
+            margin: 200px 0 0 260px;
+            font-size: 60px;
+            color: white;
+        }
+        #login_box {
+            width: 360px;
+            height: 400px;
+            margin: 60px 0 0 40px;
+            padding: 20px;
+            background-color: white;
+        }
+        #login_box h1 {
+            display: inline-block;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #bottom {
+            height: 30px;
+            text-align: center;
+        }
+        .itxt {
+            font-family: "宋体";
+            font-size: 14px;
+            height: 18px;
+            line-height: 18px;
+            overflow: hidden;
+            padding: 10px 0 10px 10px;
+            width: 220px;
+            border: 1px #e3e3e3 solid;
+        }
+        #sub_btn {
+            background-color: #39987c;
+            border: none;
+            color: #fff;
+            width: 350px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="login_header">
+        <img id="logo" alt="就是不显示!" src="../../static/img/logo.gif">
+    </div>
+    <div id="login_banner">
+        <div id="l_content">
+            <span class="login_word">欢迎注册</span>
+        </div>
+        <div id="r_content">
+            <div id="login_box">
+                <h1>注册尚硅谷会员</h1>
+                <span class="errorMsg" style="float: right; color: red"></span>
+                <form action="regist_success.html">
+                    <label>用户名称：</label>
+                    <input class="itxt" type="text" placeholder="请输入用户名"
+                            autocomplete="on" name="username" id="username"/>
+                    <br>
+                    <br>
+                    <label>用户密码：</label>
+                    <input class="itxt" type="text" placeholder="请输入用户密码"
+                           autocomplete="on" name="password" id="password"/>
+                    <br>
+                    <br>
+                    <label>确认密码：</label>
+                    <input class="itxt" type="password" placeholder="确认密码"
+                           autocomplete="on" name="repwd" id="repwd" />
+                    <br>
+                    <br>
+                    <label>电子邮件：</label>
+                    <input class="itxt" type="text" placeholder="请输入邮箱地址"
+                           autocomplete="on" name="email" id="email" />
+                    <br>
+                    <br>
+                    <label>验证码:</label>
+                    <input class="itxt" type="text" style="width: 140px;" id="code"/>
+                    <img src="../../static/img/code.bmp" style="float: right; margin-right: 40px" >
+                    <br>
+                    <br>
+                    <input type="submit" value="注册" id="sub_btn"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="bottom">
+        <span>
+				尚硅谷书城.Copyright &copy;2015
+        </span>
+    </div>
+</body>
+</html>

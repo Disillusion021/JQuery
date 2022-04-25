@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script type="text/javascript" src="webjars/jquery/3.5.1/jquery.js"></script>
+    <script type="text/javascript">
+        //核心函数的4个作用
+        //传入参数为[函数]时，在文档加载完成后执行这个函数
+        $(function () {
+            //传入参数为[选择器字符串]时，根据这个字符串查找元素节点对象
+            $("#btn").click(function () {
+                alert("jQuery的单击事件");
+            });
+            $("li").html("我是" + "&lt" + "li" + "&gt" + "标签");
+            //传入参数为[HTML字符串]时，根据这个字符串创建元素节点对象
+            $("<div>" +
+                "<span>div-span1</span>" +
+                "<span>div-span2</span>" +
+                "</div>").appendTo("body");
+            alert($("li").length);
+            alert($("li")[1].innerHTML);
+            //传入参数为[DOM对象]时，将DOM对象包装为jQuery对象返回
+            alert($(document.getElementById("btn")));
+        });
+    </script>
+</head>
+<body>
+<button id="btn">HelloWorld!</button>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
