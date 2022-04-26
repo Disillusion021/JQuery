@@ -19,11 +19,12 @@ public class ThreadLocalTest {
             // 获取当前线程名
             String name = Thread.currentThread().getName();
             System.out.println("线程[" + name + "]生成的随机数是" + i);
-//            data.put(name, i);
+            // data.put(name, i);
             threadLocal.set(i);
+            // 做一些别的业务操作,把数据保存到ThreadLocal里， 只要是同一个线程，可以很方便的跨层取数据。比如从Service或Dao层里取数据。
             new OrderService().creatOrder();
             // 在run()方法快结束之前，以当前线程名获取出数据并打印。查看是否可以取出操作
-//            Object o = data.get(name);
+            // Object o = data.get(name);
             Object o = threadLocal.get();
             System.out.println("在线程[" + name + "]快结束时取出关联的数据是" + o);
         }

@@ -99,4 +99,13 @@
         <!--/admin/* 表示请求地址为 http://ip:port/工程路径/admin/* -->
         <url-pattern>/ad/*</url-pattern>
     </filter-mapping>
+
+    <filter>
+        <filter-name>filterSecond</filter-name>
+        <filter-class>com.coding.filter.FilterSecond</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>filterSecond</filter-name>
+        <url-pattern>/ad/*</url-pattern>
+    </filter-mapping>
 </web-app>

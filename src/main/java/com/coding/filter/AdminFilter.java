@@ -43,12 +43,13 @@ public class AdminFilter implements Filter {
         } else {
             // 让程序继续往下访问用户的目标资源。
             chain.doFilter(request, response);
+            System.out.println("AdminFilter chain.doFilter执行完的后置代码");
         }
     }
 
     @Override
     public void destroy() {
-        System.out.println("4. 最后执行Filter的destroy()方法");
+        System.out.println("4. 最后执行AdminFilter的destroy()方法");
         Filter.super.destroy();
     }
 }
