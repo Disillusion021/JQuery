@@ -13,7 +13,7 @@
 <body>
 <form action="http://localhost:8080/JQuery/regist" method="get">
     用户名：<input type="text" name="username"><br>
-    用户名：<input type="text" name="code"><br>
+    验证码：<input type="text" name="code"><br>
     <img src="http://localhost:8080/JQuery/kapatcha.jpg" style="width: 200px; height: 56px"><br>
     <input type="submit" value="登录">
 </form>
